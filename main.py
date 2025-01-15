@@ -14,8 +14,7 @@ def insert_document():
     inserted_id = collection.insert_one(document).inserted_id
     print(inserted_id)
 
-production = client.production
-person_collection = production.person_collection
+contacts = client.contacts.contacts
 
 def create_documents():
     first_names = ["Toby", "John", "Jane", "Alice", "Bob", "Charlie"]
@@ -27,10 +26,6 @@ def create_documents():
         doc = {"first_name": first_name, "last_name": last_name, "age": age}
         docs.append(doc)
         #person_collection.insert_one(doc)
-
-    person_collection.insert_many(docs)
-
-printer = pprint.PrettyPrinter()
 
 def find_all_people():
     people = person_collection.find()
@@ -69,3 +64,10 @@ def project_columns():
     for person in people:
         pprint.pprint(person)    
 
+printer = pprint.PrettyPrinter()
+
+def get_contacts():
+    for contact in contacts.find():
+        pprint.pprint(contact)
+
+get_contacts()
