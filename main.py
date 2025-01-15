@@ -1,11 +1,7 @@
-from dotenv import load_dotenv, find_dotenv
-import os
 import pprint
 from pymongo import MongoClient
-load_dotenv(find_dotenv())
 
-password = os.getenv("MONGODB_PWD")
-connection_string = f"mongodb+srv://toby:{password}@cluster0.8oqqe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+connection_string = f"mongodb+srv://toby:Lev3l123@cluster0.8oqqe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 client = MongoClient(connection_string)
 
 dbs = client.list_database_names()
@@ -73,4 +69,3 @@ def project_columns():
     for person in people:
         pprint.pprint(person)    
 
-project_columns()
